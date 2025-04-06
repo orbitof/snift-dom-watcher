@@ -1,14 +1,25 @@
 {
   "name": "snift-dom-watcher",
   "version": "1.0.0",
-  "description": "DOM element change monitor with notifications",
+  "description": "A CLI tool that monitors DOM elements and sends notifications when changes are detected",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
     "snift": "dist/cli/index.js"
   },
+  "files": [
+    "dist",
+    "config/default.config.json",
+    "config/examples",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc && npm run copy-files",
-    "copy-files": "mkdir -p dist/config && cp default.config.json dist/config/",
+    "copy-files": "mkdir -p dist/config && cp config/default.config.json dist/config/",
+    "clean": "rm -rf dist/",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run clean && npm run build",
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,15 +27,33 @@
     "dom",
     "monitor",
     "notifications",
-    "cli"
+    "cli",
+    "puppeteer",
+    "watch",
+    "automation"
   ],
-  "author": "",
+  "author": {
+    "name": "orbitof",
+    "url": "https://github.com/orbitof"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orbitof/snift-dom-watcher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/orbitof/snift-dom-watcher/issues"
+  },
+  "homepage": "https://github.com/orbitof/snift-dom-watcher#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
+    "axios": "^1.6.7",
     "commander": "^11.1.0",
     "node-notifier": "^10.0.1",
     "pushover-notifications": "^1.2.2",
-    "puppeteer": "^21.7.0"
+    "puppeteer": "^22.8.2"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",

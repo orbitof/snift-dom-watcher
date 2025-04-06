@@ -1,11 +1,10 @@
-import { Command } from 'commander';
-import { resolve } from 'path';
+#!/usr/bin/env node
+
+import { program } from 'commander';
 import { ConfigManager } from '../config';
 import { DOMWatcher } from '../core/watcher';
 import { NotificationManager } from '../notifications';
 import { formatLog } from '../utils/date';
-
-const program = new Command();
 
 program
   .name('snift')
@@ -15,18 +14,14 @@ program
 program
   .command('watch')
   .description('Start watching DOM element changes')
-  .option('-c, --config <path>', 'Path to config file', 'snift.config.json')
+  .option('-c, --config <path>', 'Path to config file', 'config/snift.config.json')
   .action(async (options) => {
     try {
-      const configPath = resolve(process.cwd(), options.config);
-      const configManager = new ConfigManager(configPath);
-      const config = configManager.getConfig();
-
-      // Initialize notification system
       console.log(formatLog('Initializing notification system...'));
+      const configManager = new ConfigManager(options.config);
+      const config = configManager.getConfig();
       const notificationManager = new NotificationManager(config);
 
-      // Initialize and start watcher
       console.log(formatLog('Initializing DOM watcher...'));
       const watcher = new DOMWatcher(config);
 
@@ -69,14 +64,11 @@ program
 program
   .command('test')
   .description('Test notifications')
-  .option('-c, --config <path>', 'Path to config file', 'snift.config.json')
+  .option('-c, --config <path>', 'Path to config file', 'config/snift.config.json')
   .action(async (options) => {
     try {
-      const configPath = resolve(process.cwd(), options.config);
-      const configManager = new ConfigManager(configPath);
+      const configManager = new ConfigManager(options.config);
       const config = configManager.getConfig();
-
-      // Initialize notification system
       const notificationManager = new NotificationManager(config);
       
       console.log(formatLog('Testing notifications...'));
@@ -96,11 +88,11 @@ program
   .command('config')
   .description('Config file operations')
   .option('--init', 'Create default config file')
-  .option('-o, --output <path>', 'Output path for config file', 'snift.config.json')
+  .option('-o, --output <path>', 'Output path for config file', 'config/snift.config.json')
   .action(async (options) => {
     try {
       if (options.init) {
-        const outputPath = resolve(process.cwd(), options.output);
+        const outputPath = options.output;
         ConfigManager.createDefaultConfig(outputPath);
         console.log(formatLog(`Default config created at: ${outputPath}`));
         console.log(formatLog('Please update the config with your settings before running the watcher.'));

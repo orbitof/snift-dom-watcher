@@ -9,7 +9,7 @@ export class ConfigManager {
   constructor(configPath?: string) {
     // Load default config
     const defaultConfig = JSON.parse(
-      readFileSync(resolve(__dirname, '../../default.config.json'), 'utf-8')
+      readFileSync(resolve(__dirname, '../../config/default.config.json'), 'utf-8')
     );
 
     if (configPath) {
@@ -70,7 +70,7 @@ export class ConfigManager {
   public static createDefaultConfig(outputPath: string): void {
     try {
       const defaultConfig = readFileSync(
-        resolve(__dirname, '../../default.config.json'),
+        resolve(__dirname, '../../config/default.config.json'),
         'utf-8'
       );
       const configPath = resolve(outputPath);

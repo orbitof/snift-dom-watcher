@@ -9,7 +9,7 @@ import { formatLog } from '../utils/date';
 program
   .name('snift')
   .description('DOM element change monitor with notifications')
-  .version('1.0.0');
+  .version('1.0.1');
 
 program
   .command('watch')

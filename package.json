@@ -1,6 +1,6 @@
 {
   "name": "snift-dom-watcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CLI tool that monitors DOM elements and sends notifications when changes are detected",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -52,8 +52,8 @@
     "axios": "^1.6.7",
     "commander": "^11.1.0",
     "node-notifier": "^10.0.1",
-    "puppeteer": "^22.8.2",
-    "pushover-notifications": "^1.2.2"
+    "pushover-notifications": "^1.2.2",
+    "puppeteer": "^22.8.2"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",

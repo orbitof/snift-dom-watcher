@@ -22,19 +22,19 @@ npm install -g snift-dom-watcher
 
 ```bash
 # Copy default config
-cp snift.config.json local/my.config.json
+cp config/snift.config.json config/local/my.config.json
 
 # Edit your configuration
-vim local/my.config.json
+vim config/local/my.config.json
 ```
 
 2. Start monitoring:
 
 ```bash
-snift watch -c local/my.config.json
+snift watch -c config/local/my.config.json
 ```
 
-Note: If no config file is specified, snift will use `snift.config.json` from the current directory.
+Note: If no config file is specified, snift will use `config/snift.config.json` from the current directory.
 
 ## Configuration
 
@@ -47,16 +47,16 @@ Note: If no config file is specified, snift will use `snift.config.json` from th
 
 ### Project Structure
 
-- `snift.config.json`: Default configuration file
-- `examples/`: Example configurations for different use cases
-- `local/`: Directory for personal configurations (\*.json files are gitignored)
+- `config/snift.config.json`: Default configuration file
+- `config/examples/`: Example configurations for different use cases
+- `config/local/`: Directory for personal configurations (\*.json files are gitignored)
 
 Best practices:
 
-1. Start with `snift.config.json` as a template
-2. Store personal configs in `local/` directory
-3. Use meaningful names (e.g., `local/my.config.json`)
-4. Check `examples/` for specific use cases
+1. Start with `config/snift.config.json` as a template
+2. Store personal configs in `config/local/` directory
+3. Use meaningful names (e.g., `config/local/my.config.json`)
+4. Check `config/examples/` for specific use cases
 
 ### Supported Intervals
 
@@ -117,7 +117,7 @@ snift test
 
 ## Example Use Case
 
-You can find example configurations in the `examples/` directory. For instance, monitor Apple Store refurbished products:
+You can find example configurations in the `config/examples/` directory. For instance, monitor Apple Store refurbished products:
 
 ```json
 {
@@ -134,11 +134,11 @@ This example monitors the availability status of a specific refurbished product 
 ## Command Line Interface
 
 ```bash
-# Start watching with default config (snift.config.json)
+# Start watching with default config (config/snift.config.json)
 snift watch
 
 # Start watching with custom config
-snift watch -c local/my.config.json
+snift watch -c config/local/my.config.json
 
 # Test notifications
 snift test

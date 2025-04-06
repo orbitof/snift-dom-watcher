@@ -1,0 +1,34 @@
+{
+  "name": "snift-dom-watcher",
+  "version": "1.0.0",
+  "description": "DOM element change monitor with notifications",
+  "main": "dist/index.js",
+  "bin": {
+    "snift": "dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc && npm run copy-files",
+    "copy-files": "mkdir -p dist/config && cp default.config.json dist/config/",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dom",
+    "monitor",
+    "notifications",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "node-notifier": "^10.0.1",
+    "pushover-notifications": "^1.2.2",
+    "puppeteer": "^21.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "@types/node-notifier": "^8.0.5",
+    "typescript": "^5.3.3"
+  }
+}

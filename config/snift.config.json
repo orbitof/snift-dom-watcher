@@ -1,0 +1,18 @@
+{
+  "url": "https://example.com",
+  "selector": "#target-element",
+  "notify": ["desktop"],
+  "interval": "1m",
+  "retryOnError": true,
+  "pushover": {
+    "user": "YOUR_USER_KEY",
+    "token": "YOUR_APP_TOKEN"
+  },
+  "webhook": {
+    "url": "https://your-webhook-url.com",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
